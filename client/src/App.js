@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Switch, Link, Route} from 'react-router-dom'
+import { Switch, Route} from 'react-router-dom'
 import MovieList from './Movies/MovieList'
 import Movie from './Movies/Movie'
 
@@ -29,14 +29,15 @@ const App = () => {
     if (saved.includes(id)) return 
     return setSaved([...saved, id])
   };
+  console.log(saved)
   return (
     <div>
-      <SavedList list={[ /* This is stretch */]} />
+      <SavedList  list={saved}/>
 
     {/* Switch creates an if else statement for Route*/}
     <Switch> 
       <Route path='/Movie/:movieId'>
-      <Movie movies={movieList} addToSavedList={addToSavedList} saved={saved} setSaved={setSaved}/>
+      <Movie movies={movieList} addToSavedList={addToSavedList}/>
       </Route>
       <Route path='/'>
         <MovieList movies={movieList}/>

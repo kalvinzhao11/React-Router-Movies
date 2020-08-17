@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {useParams} from 'react-router-dom'
+import {useParams, NavLink, Route, useRouteMatch} from 'react-router-dom'
+import SavedList from './SavedList'
 
 const Movie = (props) => {
   const [movie, setMovie] = useState();
   const {movieId}  = useParams()
   const { movies, addToSavedList } = props
+  const {url , path} = useRouteMatch()
 
   useEffect(() => {
     const id = movies.find(movId=>{
@@ -26,7 +28,6 @@ const Movie = (props) => {
   },[]);
   
   // Uncomment this only when you have moved on to the stretch goals
-  // console.log(props)
   const saveMovie = evt => {
     addToSavedList(movie)
 
@@ -55,7 +56,10 @@ const Movie = (props) => {
           </div>
         ))}
       </div>
-      <div className="save-button" onClick={saveMovie}>Save</div>
+      <NavLink to={`${url}/SavedList`} className="save-button" onClick={saveMovie}>Save</NavLink>
+      <Route path={`${path}/SavedList`}>
+        {/* <SavedList /> */}
+      </Route>
     </div>
   );
 }
