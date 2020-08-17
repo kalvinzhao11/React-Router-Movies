@@ -5,10 +5,9 @@ import {useParams} from 'react-router-dom'
 const Movie = (props) => {
   const [movie, setMovie] = useState();
   const {movieId}  = useParams()
-  const { movies } = props
+  const { movies, addToSavedList } = props
 
   useEffect(() => {
-    console.log(movies)
     const id = movies.find(movId=>{
       return movId.id == movieId
     },[])
@@ -18,7 +17,6 @@ const Movie = (props) => {
        axios
         .get(`http://localhost:5000/api/movies/${movieId}`)
         .then(response => {
-          console.log(response)
           setMovie(response.data);
         })
         .catch(error => {
@@ -28,8 +26,11 @@ const Movie = (props) => {
   },[]);
   
   // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = evt => {
-  // }
+  // console.log(props)
+  const saveMovie = evt => {
+    addToSavedList(movie)
+
+  }
 
   if (!movie) {
     return <div>Loading movie information...</div>;
@@ -54,7 +55,7 @@ const Movie = (props) => {
           </div>
         ))}
       </div>
-      <div className="save-button">Save</div>
+      <div className="save-button" onClick={saveMovie}>Save</div>
     </div>
   );
 }

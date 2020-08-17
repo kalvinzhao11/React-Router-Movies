@@ -27,22 +27,19 @@ const App = () => {
 
   const addToSavedList = id => {
     // This is stretch. Prevent the same movie from being "saved" more than once
+    if (saved.includes(id)) return 
+    return setSaved([...saved, id])
   };
+  addToSavedList('star war')
+  console.log(saved)
   return (
     <div>
       <SavedList list={[ /* This is stretch */]} />
-      {/* <div>Replace this Div with your Routes</div> */}
-      {/* <Link to='/'>MovieList</Link> */}
-      {/* changes the url link */}
-      {/* <Link to='/Movie'>Movie</Link> */}
 
-    {/* creates an if else statement */}
+    {/* Switch creates an if else statement for Route*/}
     <Switch> 
       <Route path='/Movie/:movieId'>
-      <Movie movies={movieList}/>
-      </Route>
-      <Route path='/Movie'>
-        {/* <Movie movies={movieList}/> */}
+      <Movie movies={movieList} addToSavedList={addToSavedList} saved={saved} setSaved={setSaved}/>
       </Route>
       <Route path='/'>
         <MovieList movies={movieList}/>
