@@ -39,10 +39,10 @@ const App = () => {
     {/* creates an if else statement */}
     <Switch> 
       <Route path='/Movie/:movieId'>
-        <MovieCard movies={movieList}/>
+      <Movie movies={movieList}/>
       </Route>
       <Route path='/Movie'>
-        <Movie movies={movieList}/>
+        {/* <Movie movies={movieList}/> */}
       </Route>
       <Route path='/'>
         <MovieList movies={movieList}/>

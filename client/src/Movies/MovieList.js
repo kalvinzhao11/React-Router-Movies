@@ -22,7 +22,6 @@ function MovieDetails({ movie }) {
   return (
     <div className="movie-card">
       <Link to={`${url}movie/${movie.id}`}>
-        {console.log(`${url}movie/${movie.id}`)}
       <h2>{title}</h2>
       <div className="movie-director">
         Director: <em>{director}</em>
