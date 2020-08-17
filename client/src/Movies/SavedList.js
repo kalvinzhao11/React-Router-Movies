@@ -1,16 +1,12 @@
 import React from 'react';
 import {useHistory } from 'react-router-dom'
 
-// const history = useHistory()
-// const backHome = () => {
-//   history.goBack()
-// }
-
+// changed () to {} to add function inside of savedlist
 const SavedList = props => {
   const history = useHistory()
   const backHome = () => {
-  history.push('/')
-}
+    history.push('/')
+  }
   return (
   <div className="saved-list">
     <h3>Saved Movies:</h3>
