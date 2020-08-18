@@ -29,7 +29,7 @@ const App = () => {
     if (saved.includes(id)) return 
     return setSaved([...saved, id])
   };
-  console.log(saved)
+
   return (
     <div>
       <SavedList  list={saved}/>
@@ -37,7 +37,7 @@ const App = () => {
     {/* Switch creates an if else statement for Route*/}
     <Switch> 
       <Route path='/Movie/:movieId'>
-      <Movie movies={movieList} addToSavedList={addToSavedList}/>
+        <Movie movies={movieList} addToSavedList={addToSavedList}/>
       </Route>
       <Route path='/'>
         <MovieList movies={movieList}/>
